@@ -31,12 +31,13 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
+    'myAPP', #或者写成'myAPP.apps.MyappConfig',
+    'django.contrib.admin', #管理后台站点
+    'django.contrib.auth', #身份认证系统
+    'django.contrib.contenttypes', #内容类型框架
+    'django.contrib.sessions', #会话框架
+    'django.contrib.messages', #消息框架
+    'django.contrib.staticfiles', #静态文件管理框架
 ]
 
 MIDDLEWARE = [
@@ -72,11 +73,16 @@ WSGI_APPLICATION = 'myDjango.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
-
+import pymysql
+pymysql.install_as_MySQLdb()
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'test',
+        'HOST':'127.0.0.1',
+        'USER':'test',
+        'PASSWORD':'226234',
+        'PORT':'3306'
     }
 }
 
@@ -105,7 +111,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
