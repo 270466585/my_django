@@ -16,8 +16,9 @@ Including another URLconf
 #include语法相当于多级路由，它把接收到的url地址去除前面的正则表达式，将剩下的字符串传递给下一级路由进行判断
 from django.conf.urls import url,include
 from django.contrib import admin
-
+from myAPP import views
 urlpatterns = [
-    url(r'^myAPP/',include('myAPP.urls')),
+    # url(r'^myAPP/',include('myAPP.urls')),
     url(r'^admin/', admin.site.urls),
+    url(r'^index',views.getCode),
 ]

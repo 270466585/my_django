@@ -1,21 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Django study</title>
-</head>
-<body>
-{% if latest_question_list %}
-    <ul>
-        {% for question in latest_question_list %}
-{#                <!--<li><a href="/myAPP/{{ question.id }}/">{{ question.question_text }}</a> </li>-->#}
-{#            <!--<li><a href="{% url 'detail' question_id %}">{{ question.question_text }}</a> </li>-->#}
-                <li><a href="{% url 'myAPP:detail' question.id %}">{{question.question_text}}</a> </li>
-
-        {% endfor %}
-    </ul>0
-{% else %}
-    <p>NO myAPP are available.</p>
-{% endif %}
-</body>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Base</title>
+		<link rel="stylesheet" type="text/css" href="css/css.css"/>
+	</head>
+	<body>
+		<div class="toubu">
+			<h1 class="toubuh1"><a href="index.html">美哆便捷查询工具</a></h1>
+			<p>当前时间&nbsp:&nbsp&nbsp<span id="time" style="color: blueviolet;"></span></p>
+			<div class="login_user">
+				<img style="width: 40px;height: 40px;" src="img/logo.jpg" >
+				<ul>
+					<li><a href="#">SuperAdmin</a>
+					<ul class="login_list">
+						<li class=""><a href="#">注销</a></li>
+					</ul>
+					</li>
+				</ul>
+			</div>
+			<script>
+			    function mytime(){
+			        var a = new Date();
+			        var b = a.toLocaleTimeString();
+			        var c = a.toLocaleDateString();
+			        document.getElementById("time").innerHTML = c+"&nbsp"+b;
+			        }
+			    setInterval(function() {mytime()},1000);
+			</script>
+		</div>
+		<div class="daohang">
+			<h2 class="daohangh2">网站导航</h2>
+			<ul class="daohanglist">
+				<li style="border-bottom: 1px dashed #e6e6e6;">用户信息查询
+				<ul class="daohanglist_none">
+					<li><a href="user_query.html">用户信息列表</a></li>
+				</ul>
+				</li>
+				<li style="border-bottom: 1px dashed #e6e6e6;">美哆链接查询
+				<ul class="daohanglist_none">
+					<li><a href="link_set.html">美哆链接列表</a></li>
+				</ul>
+				</li>
+				<li style="border-bottom: 1px dashed #e6e6e6;">数据转换
+				<ul class="daohanglist_none">
+					<li><a href="#">数据转换列表</a></li>
+				</ul>
+				</li>
+			</ul>
+		</div>
+		<div class="neirong">
+			<p><a href="index.html">首页</a> > 工作台</p>
+			<div class="neirongbackgroundimg">
+			</div>
+		</div>
+	</body>
 </html>

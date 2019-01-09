@@ -25,3 +25,7 @@ class Choice(models.Model):
     def __str__(self):
         return self.choice_text
 
+class Usertable(models.Model):
+    name=models.CharField(max_length=30)
+    age=models.CharField(max_length=30)
+

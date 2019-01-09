@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+		<link rel="stylesheet" type="text/css" href="css/css.css"/>
+		<title>用户信息查询列表</title>
+	</head>
+	<body>
+		<div class="toubu">
+			<h1 class="toubuh1"><a href="#">美哆便捷查询工具</a></h1>
+			<p>当前时间&nbsp:&nbsp&nbsp<span id="time" style="color: blueviolet;"></span></p>
+			<div class="login_user">
+				<img style="width: 40px;height: 40px;" src="img/logo.jpg" >
+				<ul>
+					<li><a href="#">SuperAdmin</a>
+					<ul class="login_list">
+						<li class=""><a href="#">注销</a></li>
+					</ul>
+					</li>
+				</ul>
+			</div>
+			<script>
+			    function mytime(){
+			        var a = new Date();
+			        var b = a.toLocaleTimeString();
+			        var c = a.toLocaleDateString();
+			        document.getElementById("time").innerHTML = c+"&nbsp"+b;
+			        }
+			    setInterval(function() {mytime()},1000);
+			</script>
+		</div>
+		<div class="daohang">
+			<h2 class="daohangh2">网站导航</h2>
+			<ul class="daohanglist">
+				<li style="border-bottom: 1px dashed #e6e6e6;">用户信息查询
+				<ul class="daohanglist_none">
+					<li><a href="user_query.html">用户信息列表</a></li>
+				</ul>
+				</li>
+				<li style="border-bottom: 1px dashed #e6e6e6;">美哆链接查询
+				<ul class="daohanglist_none">
+					<li><a href="link_set.html">美哆链接列表</a></li>
+				</ul>
+				</li>
+				<li style="border-bottom: 1px dashed #e6e6e6;">数据转换
+				<ul class="daohanglist_none">
+					<li><a href="#">数据转换列表</a></li>
+				</ul>
+				</li>
+			</ul>
+		</div>
+		<div class="neirong">
+			<p><a href="index.html">首页</a> > 用户信息列表</p>
+			<div class="box">
+				<input type="button" name="" class="box-yzm" onclick = "openCode()" value="验证码查询" />
+				<div id="cd" class="yzm_select">
+					<h2 style="margin: 5px 20px;font-size: 35px;">验证码查询</h2><hr >
+					<p style="margin-top: 30px;margin-left: 30px;"><strong>手机号</strong></p>
+					<form action="/index/" method="post">
+                        {% csrf_token %}   <!--加入这行 -->
+                        <input style="margin-left:50px;margin-bottom: 5px;width: 200px;height: 30px;" type="tel" name="number" id="" value="" placeholder="请输入你要查询手机号" />
+					    <input style="margin: 0 20px;font-size: 18px;width: 80px;height: 35px;" type="submit" value="查询" />
+                    </form>
+					<p style="margin-left: 30px;"><strong>验证码</strong></p>
+					<div class="yzm_comment">
+                        {% for item in data %}
+                            <p style="text-align: center;line-height: 180px;font-size: 100px;"><b>{{ item.code }}</b></p>
+                        {% endfor %}
+					</div>
+					<input style="margin: 30px 550px;width: 80px;height: 35px;background-color: #409EFF;font-weight: 900;" type="button" name="" id="" onclick = "closeCode()" value="关闭" />
+				</div>
+				<input type="button" name="" class="box-tk" onclick = "openToken()" value="Token查询" />
+				<div id="tk" class="tk_select">
+					<h2 style="margin: 5px 20px;font-size: 35px;">Token查询</h2><hr >
+					<p style="margin-top: 30px;margin-left: 30px;"><strong>手机号</strong></p>
+                    <form action="/index/" method="post">
+                        {% csrf_token %}   <!--加入这行 -->
+                        <input style="margin-left:50px;margin-bottom: 5px;width: 200px;height: 30px;" type="tel" name="number" id="" value="" placeholder="请输入你要查询手机号" />
+					    <input style="margin: 0 20px;font-size: 18px;width: 80px;height: 35px;" type="submit" value="查询" />
+                    </form>
+					<p style="margin-left: 30px;"><strong>Token信息</strong></p>
+					<div class="tk_comment">
+						<p style="text-align: left;font-size: 40px;line-height: 50px;"><b>
+						userId : &nbsp 7090 <br>
+						user-token : &nbsp paas4542das2d4qweq21gf2er4er5 <br>
+						devices-info : &nbsp 5SD45-4212F-56SDS-231DF
+						</b></p>
+					</div>
+					<input style="margin: 30px 550px;width: 80px;height: 35px;background-color: #409EFF;font-weight: 900;" type="button" name="" id="" onclick = "closeToken()" value="关闭" />
+				</div>
+			</div>
+			<div id="fade">
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+	    $(function(){
+	    })
+	    function openCode(){
+	        document.getElementById('cd').style.display='block';
+	        document.getElementById('fade').style.display='block'
+	    }
+		function closeCode(){
+		    document.getElementById('cd').style.display='none';
+		    document.getElementById('fade').style.display='none'
+		}
+		function openToken(){
+		    document.getElementById('tk').style.display='block';
+		    document.getElementById('fade').style.display='block'
+		}   
+		function closeToken(){
+		    document.getElementById('tk').style.display='none';
+		    document.getElementById('fade').style.display='none'
+		}
+	</script>
+</html>
