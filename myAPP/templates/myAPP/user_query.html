@@ -36,12 +36,12 @@
 			<ul class="daohanglist">
 				<li style="border-bottom: 1px dashed #e6e6e6;">用户信息查询
 				<ul class="daohanglist_none">
-					<li><a href="user_query.html">用户信息列表</a></li>
+					<li><a href="/token">用户信息列表</a></li>
 				</ul>
 				</li>
 				<li style="border-bottom: 1px dashed #e6e6e6;">美哆链接查询
 				<ul class="daohanglist_none">
-					<li><a href="link_set.html">美哆链接列表</a></li>
+					<li><a href="/createurl">美哆链接列表</a></li>
 				</ul>
 				</li>
 				<li style="border-bottom: 1px dashed #e6e6e6;">数据转换
@@ -52,20 +52,20 @@
 			</ul>
 		</div>
 		<div class="neirong">
-			<p><a href="index.html">首页</a> > 用户信息列表</p>
+			<p><a href="/index">首页</a> > 用户信息列表</p>
 			<div class="box">
 				<input type="button" name="" class="box-yzm" onclick = "openCode()" value="验证码查询" />
 				<div id="cd" class="yzm_select">
 					<h2 style="margin: 5px 20px;font-size: 35px;">验证码查询</h2><hr >
 					<p style="margin-top: 30px;margin-left: 30px;"><strong>手机号</strong></p>
-					<form action="/index/" method="post">
+					<form action="/code/" method="post">
                         {% csrf_token %}   <!--加入这行 -->
                         <input style="margin-left:50px;margin-bottom: 5px;width: 200px;height: 30px;" type="tel" name="number" id="" value="" placeholder="请输入你要查询手机号" />
 					    <input style="margin: 0 20px;font-size: 18px;width: 80px;height: 35px;" type="submit" value="查询" />
                     </form>
 					<p style="margin-left: 30px;"><strong>验证码</strong></p>
 					<div class="yzm_comment">
-                        {% for item in data %}
+                        {% for item in user_code %}
                             <p style="text-align: center;line-height: 180px;font-size: 100px;"><b>{{ item.code }}</b></p>
                         {% endfor %}
 					</div>
@@ -75,18 +75,20 @@
 				<div id="tk" class="tk_select">
 					<h2 style="margin: 5px 20px;font-size: 35px;">Token查询</h2><hr >
 					<p style="margin-top: 30px;margin-left: 30px;"><strong>手机号</strong></p>
-                    <form action="/index/" method="post">
+                    <form action="/token/" method="post">
                         {% csrf_token %}   <!--加入这行 -->
                         <input style="margin-left:50px;margin-bottom: 5px;width: 200px;height: 30px;" type="tel" name="number" id="" value="" placeholder="请输入你要查询手机号" />
-					    <input style="margin: 0 20px;font-size: 18px;width: 80px;height: 35px;" type="submit" value="查询" />
+                        <input style="margin: 0 20px;font-size: 18px;width: 80px;height: 35px;" type="submit" value="查询" />
                     </form>
 					<p style="margin-left: 30px;"><strong>Token信息</strong></p>
 					<div class="tk_comment">
-						<p style="text-align: left;font-size: 40px;line-height: 50px;"><b>
-						userId : &nbsp 7090 <br>
-						user-token : &nbsp paas4542das2d4qweq21gf2er4er5 <br>
-						devices-info : &nbsp 5SD45-4212F-56SDS-231DF
-						</b></p>
+						{% for item in user_token %}
+						    <p style="text-align: left;margin-top:0px;line-height: 50px;font-size: 30px;">
+								<b>userid :&nbsp{{ item.userid}}</b> <br>
+								<b>user-token :&nbsp{{ item.user_token}}</b>  <br>
+								<b>device-info :&nbsp{{ item.device_info}}</b>  <br>
+							</p>
+						{% endfor %}
 					</div>
 					<input style="margin: 30px 550px;width: 80px;height: 35px;background-color: #409EFF;font-weight: 900;" type="button" name="" id="" onclick = "closeToken()" value="关闭" />
 				</div>

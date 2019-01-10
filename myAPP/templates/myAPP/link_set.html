@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		{% load static %}
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
-		<link rel="stylesheet" type="text/css" href="../../static/css/css.css"/>
+		<link rel="stylesheet" type="text/css" href="{% static 'css/css.css' %}"/>
 		<title>美哆链接列表</title>
 	</head>
 	<body>
@@ -11,7 +12,7 @@
 			<h1 class="toubuh1"><a href="#">美哆便捷查询工具</a></h1>
 			<p>当前时间&nbsp:&nbsp&nbsp<span id="time" style="color: blueviolet;"></span></p>
 			<div class="login_user">
-				<img style="width: 40px;height: 40px;" src="img/logo.jpg" >
+				<img style="width: 40px;height: 40px;" src="{% static 'img/logo.jpg' %}" >
 				<ul>
 					<li><a href="#">SuperAdmin</a>
 					<ul class="login_list">
@@ -35,12 +36,12 @@
 			<ul class="daohanglist">
 				<li style="border-bottom: 1px dashed #e6e6e6;">用户信息查询
 				<ul class="daohanglist_none">
-					<li><a href="user_query.html">用户信息列表</a></li>
+					<li><a href="/token">用户信息列表</a></li>
 				</ul>
 				</li>
 				<li style="border-bottom: 1px dashed #e6e6e6;">美哆链接查询
 				<ul class="daohanglist_none">
-					<li><a href="link_set.html">美哆链接列表</a></li>
+					<li><a href="/createurl">美哆链接列表</a></li>
 				</ul>
 				</li>
 				<li style="border-bottom: 1px dashed #e6e6e6;">数据转换
@@ -51,11 +52,11 @@
 			</ul>
 		</div>
 		<div class="neirong">
-			<p><a href="index.html">首页</a> > 美哆链接列表</p>
+			<p><a href="/index">首页</a> > 美哆链接列表</p>
 			<div class="lk_list">
 				<div class="ss_list">
 					<p style="display: inline;font-size: 20px;">搜索栏：</p>
-					<input style="margin: 25px 0px;width: 200px;height:30px;" type="search" name="" id="" value="请输入你要搜索的内容" />
+					<input style="margin: 25px 0px;width: 200px;height:30px;" type="search" name="" id="" placeholder="请输入你要搜索的内容" value="" />
 					<select style="width: 200px;height:30px;margin-left: 50px;" name="">
 						<option value ="all">全部</option>
 						<option value ="ruli">如丽美容</option>
@@ -72,95 +73,33 @@
 						<th width=530px>正式环境</th>
 						<th width=530px>测试环境</th>
 					</tr>
+					{% for item in all_url %}
 					<tr bgcolor="#fff">
-						<td width=70px height="50px" align="center">1</td>
-						<td width=180px align="center">如丽美容</td>
-						<td width=180px align="center">API</td>
-						<td width=600px align="center"><a href="#" target="_blank">www.baidu.com</a></td>
-						<td width=600px align="center"><a href="#" target="_blank">www.baidu.com</a></td>
+						<td width=70px height="50px" align="center">{{ forloop.counter }}</td>
+						<td width=180px align="center">{{ item.Product_name }}</td>
+						<td width=180px align="center">{{ item.type }}</td>
+						<td width=600px align="center"><a href="{{ item.formal }}" target="_blank">{{ item.formal }}</a></td>
+						<td width=600px align="center"><a href="{{ item.test }}" target="_blank">{{ item.test }}</a></td>
 					</tr>
-					<tr bgcolor="#fff">
-						<td width=50px height="50px" align="center">2</td>
-						<td width=150px align="center">如丽美容</td>
-						<td width=150px align="center">API</td>
-						<td width=530px align="center"><a href="#" target="_blank">www.baidu.com</a></td>
-						<td width=530px align="center"><a href="#" target="_blank">www.baidu.com</a></td>
-					</tr>
-					<tr bgcolor="#fff">
-						<td width=50px height="50px" align="center">3</td>
-						<td width=150px align="center">如丽美容</td>
-						<td width=150px align="center">API</td>
-						<td width=530px align="center"><a href="#" target="_blank">www.baidu.com</a></td>
-						<td width=530px align="center"><a href="#" target="_blank">www.baidu.com</a></td>
-					</tr>
-					<tr bgcolor="#fff">
-						<td width=50px height="50px" align="center">4</td>
-						<td width=150px align="center">如丽美容</td>
-						<td width=150px align="center">API</td>
-						<td width=530px align="center"><a href="#" target="_blank">www.baidu.com</a></td>
-						<td width=530px align="center"><a href="#" target="_blank">www.baidu.com</a></td>
-					</tr>
-					<tr bgcolor="#fff">
-						<td width=50px height="50px" align="center">5</td>
-						<td width=150px align="center">如丽美容</td>
-						<td width=150px align="center">API</td>
-						<td width=530px align="center"><a href="#" target="_blank">www.baidu.com</a></td>
-						<td width=530px align="center"><a href="#" target="_blank">www.baidu.com</a></td>
-					</tr>
-					<tr bgcolor="#fff">
-						<td width=50px height="50px" align="center">6</td>
-						<td width=150px align="center">如丽美容</td>
-						<td width=150px align="center">API</td>
-						<td width=530px align="center"><a href="#" target="_blank">www.baidu.com</a></td>
-						<td width=530px align="center"><a href="#" target="_blank">www.baidu.com</a></td>
-					</tr>
-					<tr bgcolor="#fff">
-						<td width=50px height="50px" align="center">7</td>
-						<td width=150px align="center">如丽美容</td>
-						<td width=150px align="center">API</td>
-						<td width=530px align="center"><a href="#" target="_blank">www.baidu.com</a></td>
-						<td width=530px align="center"><a href="#" target="_blank">www.baidu.com</a></td>
-					</tr>
-					<tr bgcolor="#fff">
-						<td width=50px height="50px" align="center">8</td>
-						<td width=150px align="center">如丽美容</td>
-						<td width=150px align="center">API</td>
-						<td width=530px align="center"><a href="#" target="_blank">www.baidu.com</a></td>
-						<td width=530px align="center"><a href="#" target="_blank">www.baidu.com</a></td>
-					</tr>
-					<tr bgcolor="#fff">
-						<td width=50px height="50px" align="center">9</td>
-						<td width=150px align="center">如丽美容</td>
-						<td width=150px align="center">API</td>
-						<td width=530px align="center"><a href="#" target="_blank">www.baidu.com</a></td>
-						<td width=530px align="center"><a href="#" target="_blank">www.baidu.com</a></td>
-					</tr>
-					<tr bgcolor="#fff">
-						<td width=50px height="50px" align="center">10</td>
-						<td width=150px align="center">如丽美容</td>
-						<td width=150px align="center">API</td>
-						<td width=530px align="center"><a href="#" target="_blank">www.baidu.com</a></td>
-						<td width=530px align="center"><a href="#" target="_blank">www.baidu.com</a></td>
-					</tr>
+					{% endfor %}
 				</table>
 				<div id="light" class="addurl">
 					<h2>添加项目链接</h2>
 					<hr>
 					<div class="addcomment">
-						<p class="jianju">项目名称:</p>
-						<input style="width:200px;height: 30px;" type="text" name="" id="" value="" /><br>
-						<p class="jianju">项目类型:</p>
-						<input style="width:200px;height: 30px;" type="text" name="" id="" value="" /><br>
-						<p class="jianju">所属环境:</p>
-						<select style="width:200px;height: 30px;border-radius: 5px;">
-							<option value ="">请选择所属环境</option>
-							<option value ="">测试环境</option>
-							<option value ="">正式环境</option>
-						</select><br>
-						<p class="jianju">URL:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p>
-						<input style="width:350px;height: 30px;" type="url" name="" id="" value="" /><br>
-						<input style="width:100px;height: 30px;position: relative;top: 50px;left: 140px;" type="button" name="" onclick = "closeDialog()" value="返回" />
-						<input style="width:100px;height: 30px;position: relative;top: 50px;left: 140px;" type="button" name="" onclick = "closeDialog()" value="提交" />
+						<form action="createurl" method="post">
+						    {% csrf_token %}
+						    <p class="jianju">项目名称:</p>
+						    <input style="width:200px;height: 30px;" type="text" name="name" id="" value="" /><br>
+						    <p class="jianju">项目类型:</p>
+						    <input style="width:200px;height: 30px;" type="text" name="type" id="" value="" /><br>
+						    <p class="jianju">正式环境:</p>
+						    <input style="width:350px;height: 30px;" type="text" name="formal" id="" value="" /><br>
+						    <p class="jianju">测试环境:</p>
+						    <input style="width:350px;height: 30px;" type="text" name="test" id="" value="" /><br>
+						    <input style="width:100px;height: 30px;position: relative;top: 50px;left: 140px;" type="button" name="" onclick = "closeDialog()" value="返回" />
+						    <input style="width:100px;height: 30px;position: relative;top: 50px;left: 140px;" type="submit" name=""  value="提交" />
+						</form>
 					</div>
 				</div>
 				<div id="fade">

@@ -73,12 +73,7 @@ class MysqlUtil():
             self.cur.execute(sql)
             user_token=self.cur.fetchall()
             self.cur.close()
-            Information = {
-                'user_id':user_id[0][0],
-                'user_token':user_token[0][2],
-                'devices_info':user_token[0][3]
-                }
-            return Information
+            return user_id[0][0],user_token[0][2],user_token[0][3]
 
     def mysql_close(self):
         ''' 关闭 close mysql'''
@@ -112,6 +107,7 @@ if __name__ == "__main__":
     A = MysqlUtil()
     Phone_number='18123317091'
     #print (A.mysql_getVerify(Phone_number)) #获取验证码
-    print(A.mysql_getToken(Phone_number)) #获取user-token和devices-info
+    data=A.mysql_getToken(Phone_number)
+    print(data[2]) #获取user-token和devices-info
 
 

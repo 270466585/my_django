@@ -48,7 +48,7 @@ def detail_tests(request,question_id):
     question=get_object_or_404(Question,pk=question_id)
     return render(request,'myAPP/detail.html',{'question':question})
 
-def index(request):
+def index123(request):
     if request.method=='POST':
         name=request.POST.get('name')
         age=request.POST.get('age')
@@ -61,10 +61,39 @@ def index(request):
 from Public_methods.mysql_tools import MysqlUtil
 code_list=[]
 def getCode(request):
+    code_list.clear()
     if request.method=='POST':
         number=request.POST.get('number')
         print(number)
         A = MysqlUtil()
         temp={'code':A.mysql_getVerify(number)}
         code_list.append(temp)
-    return render(request,'myAPP/user_query.html',{'data':code_list})
+    return render(request,'myAPP/user_query.html',{'user_code':code_list})
+
+token_list=[]
+def getToken(request):
+    token_list.clear()
+    if request.method=='POST':
+        number=request.POST.get('number')
+        print(number)
+        A = MysqlUtil()
+        data=A.mysql_getToken(number)
+        temp={'userid':data[0],
+              'user_token':data[1],
+              'device_info':data[2]}
+        token_list.append(temp)
+    return render(request,'myAPP/user_query.html',{'user_token':token_list})
+
+
+def createUrl(request):
+    if request.method=='POST':
+        name=request.POST.get('name')
+        type=request.POST.get('type')
+        formal=request.POST.get('formal')
+        test=request.POST.get('test')
+        models.CreateUrl.objects.create(Product_name=name,type=type,formal=formal,test=test)
+    usrl_list = models.CreateUrl.objects.all()
+    return render(request, 'myAPP/link_set.html', {'all_url': usrl_list})
+
+def index(request):
+    return render(request,'myAPP/index.html')

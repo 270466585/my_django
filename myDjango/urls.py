@@ -20,5 +20,8 @@ from myAPP import views
 urlpatterns = [
     # url(r'^myAPP/',include('myAPP.urls')),
     url(r'^admin/', admin.site.urls),
-    url(r'^index',views.getCode),
+    url(r'^index', views.index),
+    url(r'^code',views.getCode),
+    url(r'^token',views.getToken),
+    url(r'^createurl', views.createUrl),
 ]

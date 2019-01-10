@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		{% load static %}
 		<meta charset="utf-8">
 		<title>Base</title>
-		<link rel="stylesheet" type="text/css" href="../../static/css/css.css"/>
+		<link rel="stylesheet" type="text/css" href="{% static 'css/css.css' %}"/>
 	</head>
 	<body>
 		<div class="toubu">
 			<h1 class="toubuh1"><a href="index.html">美哆便捷查询工具</a></h1>
 			<p>当前时间&nbsp:&nbsp&nbsp<span id="time" style="color: blueviolet;"></span></p>
 			<div class="login_user">
-				<img style="width: 40px;height: 40px;" src="img/logo.jpg" >
+				<img style="width: 40px;height: 40px;" src="{% static 'img/logo.jpg' %}" >
 				<ul>
 					<li><a href="#">SuperAdmin</a>
 					<ul class="login_list">
@@ -34,12 +35,12 @@
 			<ul class="daohanglist">
 				<li style="border-bottom: 1px dashed #e6e6e6;">用户信息查询
 				<ul class="daohanglist_none">
-					<li><a href="user_query.html">用户信息列表</a></li>
+					<li><a href="/token">用户信息列表</a></li>
 				</ul>
 				</li>
 				<li style="border-bottom: 1px dashed #e6e6e6;">美哆链接查询
 				<ul class="daohanglist_none">
-					<li><a href="link_set.html">美哆链接列表</a></li>
+					<li><a href="/createurl">美哆链接列表</a></li>
 				</ul>
 				</li>
 				<li style="border-bottom: 1px dashed #e6e6e6;">数据转换
@@ -50,7 +51,7 @@
 			</ul>
 		</div>
 		<div class="neirong">
-			<p><a href="index.html">首页</a> > 工作台</p>
+			<p><a href="/index">首页</a> > 工作台</p>
 			<div class="neirongbackgroundimg">
 			</div>
 		</div>
