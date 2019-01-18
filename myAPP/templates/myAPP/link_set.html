@@ -5,6 +5,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
 		<link rel="stylesheet" type="text/css" href="{% static 'css/css.css' %}"/>
+		<link rel="icon" type="image/x-icon" href="{% static 'img/meiduo.ico' %}" mce_href="{% static 'img/meiduo.ico' %}"/>
 		<title>美哆链接列表</title>
 	</head>
 	<body>
@@ -65,7 +66,7 @@
 					</select>
 					<input type="button" name="" class="anniu" onclick = "openDialog()" value="添加新网址" />
 				</div>
-				<table style="margin: 30px 30px;width:;" bgcolor="#ebeef5" cellspacing="1" cellpadding="5">
+				<table style="margin: 30px 30px;" bgcolor="#ebeef5" cellspacing="1" cellpadding="5">
 					<tr bgcolor="#fff">
 						<th width=50px height="50px">ID</th>
 						<th width=150px>项目名称</th>
@@ -78,8 +79,8 @@
 						<td width=70px height="50px" align="center">{{ forloop.counter }}</td>
 						<td width=180px align="center">{{ item.Product_name }}</td>
 						<td width=180px align="center">{{ item.type }}</td>
-						<td width=600px align="center"><a href="{{ item.formal }}" target="_blank">{{ item.formal }}</a></td>
-						<td width=600px align="center"><a href="{{ item.test }}" target="_blank">{{ item.test }}</a></td>
+						<td width=600px align="center"><a style="color: black;text-shadow:3px 3px 10px darkkhaki;" href="{{ item.formal }}" target="_blank">{{ item.formal }}</a></td>
+						<td width=600px align="center"><a style="color: black;text-shadow:3px 3px 10px darkkhaki;" href="{{ item.test }}" target="_blank">{{ item.test }}</a></td>
 					</tr>
 					{% endfor %}
 				</table>
