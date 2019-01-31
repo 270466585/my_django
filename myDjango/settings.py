@@ -24,9 +24,9 @@ print(BASE_DIR)
 SECRET_KEY = '^d#n7jz1u6edp=nfl+tyy06^pdx&s+r9j714&8ew36!umrhn77'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition

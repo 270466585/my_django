@@ -75,7 +75,6 @@ def getToken(request):
     token_list.clear()
     if request.method=='POST':
         number=request.POST.get('number')
-        print(number)
         A = MysqlUtil()
         data=A.mysql_getToken(number)
         temp={'userid':data[0],

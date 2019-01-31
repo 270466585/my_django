@@ -12,4 +12,8 @@ urlpatterns=[
     url(r'^(?P<question_id>[0-9]+)/detail',views.detail,name='detail'),
     url(r'^(?P<question_id>[0-9]+)/detail_test',views.detail_test,name='detail_test'),
     url(r'^specifics/(?P<question_id>[0-9]+)/detail_tests',views.detail_tests,name='detail_tests'),
+    url(r'^index',views.index,name='index'),
+    url(r'^code',views.getCode,name='getCode'),
+    url(r'^token',views.getToken,name='getToken'),
+    url(r'^createurl',views.createUrl,name='createUrl'),
 ]
